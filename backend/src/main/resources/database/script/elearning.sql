@@ -179,7 +179,7 @@ ALTER TABlE submissions ADD CONSTRAINT class_dtl_submissions_fk FOREIGN KEY(clas
 ALTER TABLE submissions ADD CONSTRAINT schedules_submissions_fk FOREIGN KEY(schedule_id) REFERENCES schedules(id);
 ALTER TABLE submissions ADD CONSTRAINT files_submissions_fk FOREIGN KEY(file_id) REFERENCES files(id);
 
-CREATE TABLE attendance(
+CREATE TABLE attendances(
 id serial,
 approval boolean DEFAULT FALSE,
 
@@ -193,9 +193,9 @@ updated_at timestamp WITHOUT TIME ZONE,
 ver int NOT NULL DEFAULT 0,
 is_active boolean NOT NULL DEFAULT TRUE
 );
-ALTER TABLE attendance ADD CONSTRAINT attendance_pk PRIMARY KEY(id);
-ALTER TABLE attendance ADD CONSTRAINT class_dtl_id_attendance_fk FOREIGN KEY(class_dtl_id) REFERENCES class_dtl(id);
-ALTER TABLE attendance ADD CONSTRAINT schedule_attendance_fk FOREIGN KEY(schedule_id) REFERENCES schedules(id);
+ALTER TABLE attendances ADD CONSTRAINT attendances_pk PRIMARY KEY(id);
+ALTER TABLE attendances ADD CONSTRAINT class_dtl_id_attendances_fk FOREIGN KEY(class_dtl_id) REFERENCES class_dtl(id);
+ALTER TABLE attendances ADD CONSTRAINT schedule_attendances_fk FOREIGN KEY(schedule_id) REFERENCES schedules(id);
 
 CREATE TABLE forums(
 id serial,
