@@ -16,11 +16,11 @@ import com.lawencon.elearning.dto.activity.ActivityDataDto;
 import com.lawencon.elearning.dto.activity.ActivityInsertReqDto;
 import com.lawencon.elearning.dto.activity.ActivityListDataDto;
 import com.lawencon.elearning.dto.activity.ActivityUpdateReqDto;
-import com.lawencon.elearning.dto.response.DataResponseDto;
-import com.lawencon.elearning.dto.response.DeleteResponseDto;
-import com.lawencon.elearning.dto.response.InsertResponseDto;
-import com.lawencon.elearning.dto.response.TransactionResponseDto;
-import com.lawencon.elearning.dto.response.UpdateResponseDto;
+import com.lawencon.elearning.dto.response.DataResDto;
+import com.lawencon.elearning.dto.response.DeleteResDto;
+import com.lawencon.elearning.dto.response.InsertResDto;
+import com.lawencon.elearning.dto.response.TransactionResDto;
+import com.lawencon.elearning.dto.response.UpdateResDto;
 import com.lawencon.elearning.service.ActivityService;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -34,20 +34,20 @@ public class ActivityController {
 	private ActivityService activityService;
 	
 	@PostMapping
-	public ResponseEntity<TransactionResponseDto<InsertResponseDto>> insert(@RequestBody final ActivityInsertReqDto data){
-		final TransactionResponseDto<InsertResponseDto> result = activityService.insert(data);
+	public ResponseEntity<TransactionResDto<InsertResDto>> insert(@RequestBody final ActivityInsertReqDto data){
+		final TransactionResDto<InsertResDto> result = activityService.insert(data);
 		return new ResponseEntity<>(result, HttpStatus.CREATED);
 	}
 
 	@PutMapping
-	public ResponseEntity<TransactionResponseDto<UpdateResponseDto>> update(@RequestBody final ActivityUpdateReqDto data){
-		final TransactionResponseDto<UpdateResponseDto> result = activityService.update(data);
+	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody final ActivityUpdateReqDto data){
+		final TransactionResDto<UpdateResDto> result = activityService.update(data);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
 	@GetMapping
-	public ResponseEntity<DataResponseDto<ActivityDataDto>> getById(@RequestParam(required = true) final Long id){
-		final DataResponseDto<ActivityDataDto> result = activityService.getById(id);
+	public ResponseEntity<DataResDto<ActivityDataDto>> getById(@RequestParam(required = true) final Long id){
+		final DataResDto<ActivityDataDto> result = activityService.getById(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
@@ -58,8 +58,8 @@ public class ActivityController {
 	}
 
 	@DeleteMapping("remove")
-	public ResponseEntity<DeleteResponseDto> delete(@RequestParam("id") final Long id) {
-		final DeleteResponseDto result = activityService.deleteById(id);
+	public ResponseEntity<DeleteResDto> delete(@RequestParam("id") final Long id) {
+		final DeleteResDto result = activityService.deleteById(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 

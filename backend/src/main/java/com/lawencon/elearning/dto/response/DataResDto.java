@@ -3,8 +3,8 @@ package com.lawencon.elearning.dto.response;
 import lombok.Data;
 
 @Data
-public class InsertResponseDto {
+public class DataResDto<T> {
     
-    private Long id;
+    private T data;
 
 }

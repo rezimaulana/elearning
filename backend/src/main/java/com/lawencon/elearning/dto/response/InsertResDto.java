@@ -3,8 +3,8 @@ package com.lawencon.elearning.dto.response;
 import lombok.Data;
 
 @Data
-public class DeleteResponseDto {
+public class InsertResDto {
     
-    private String message;
+    private Long id;
 
 }

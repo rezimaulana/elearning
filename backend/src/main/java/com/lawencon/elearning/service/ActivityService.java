@@ -16,11 +16,11 @@ import com.lawencon.elearning.dto.activity.ActivityDataDto;
 import com.lawencon.elearning.dto.activity.ActivityInsertReqDto;
 import com.lawencon.elearning.dto.activity.ActivityListDataDto;
 import com.lawencon.elearning.dto.activity.ActivityUpdateReqDto;
-import com.lawencon.elearning.dto.response.DataResponseDto;
-import com.lawencon.elearning.dto.response.DeleteResponseDto;
-import com.lawencon.elearning.dto.response.InsertResponseDto;
-import com.lawencon.elearning.dto.response.TransactionResponseDto;
-import com.lawencon.elearning.dto.response.UpdateResponseDto;
+import com.lawencon.elearning.dto.response.DataResDto;
+import com.lawencon.elearning.dto.response.DeleteResDto;
+import com.lawencon.elearning.dto.response.InsertResDto;
+import com.lawencon.elearning.dto.response.TransactionResDto;
+import com.lawencon.elearning.dto.response.UpdateResDto;
 import com.lawencon.elearning.model.Activity;
 import com.lawencon.elearning.util.GenerateCodeUtil;
 
@@ -34,15 +34,15 @@ public class ActivityService {
     private GenerateCodeUtil generateCodeUtil;
 
     @Transactional(rollbackOn = Exception.class)
-    public TransactionResponseDto<InsertResponseDto> insert(final ActivityInsertReqDto data) {
-        final TransactionResponseDto<InsertResponseDto> responseBe = new TransactionResponseDto<InsertResponseDto>();
+    public TransactionResDto<InsertResDto> insert(final ActivityInsertReqDto data) {
+        final TransactionResDto<InsertResDto> responseBe = new TransactionResDto<InsertResDto>();
         try {
             final Activity activity = new Activity();
             activity.setCode("AC" + generateCodeUtil.generateDigit(3));
             activity.setType(data.getActivityType());
             activity.setCreatedBy(1L);
             final Activity insertOne = activityDao.insert(activity);
-            final InsertResponseDto responseDb = new InsertResponseDto();
+            final InsertResDto responseDb = new InsertResDto();
             responseDb.setId(insertOne.getId());
             responseBe.setData(responseDb);
             responseBe.setMessage(ResponseConst.CREATED.getResponse() + " " + ModelConst.ACTIVITY.getResponse());
@@ -54,8 +54,8 @@ public class ActivityService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public TransactionResponseDto<UpdateResponseDto> update(final ActivityUpdateReqDto data) {
-        final TransactionResponseDto<UpdateResponseDto> responseBe = new TransactionResponseDto<UpdateResponseDto>();
+    public TransactionResDto<UpdateResDto> update(final ActivityUpdateReqDto data) {
+        final TransactionResDto<UpdateResDto> responseBe = new TransactionResDto<UpdateResDto>();
         final Optional<Activity> optional = activityDao.getById(data.getId());
         Activity updateOne = null;
         if (optional.isPresent()) {
@@ -65,7 +65,7 @@ public class ActivityService {
                 updateOne.setUpdatedBy(1L);
                 updateOne.setIsActive(data.getIsActive());
                 updateOne = activityDao.update(updateOne);
-                final UpdateResponseDto responseDb = new UpdateResponseDto();
+                final UpdateResDto responseDb = new UpdateResDto();
                 responseDb.setVer(updateOne.getVer());
                 responseBe.setData(responseDb);
                 responseBe.setMessage(ResponseConst.UPDATED.getResponse() + " " + ModelConst.ACTIVITY.getResponse());
@@ -77,7 +77,7 @@ public class ActivityService {
         return responseBe;
     }
 
-    public DataResponseDto<ActivityDataDto> getById(final Long id) {
+    public DataResDto<ActivityDataDto> getById(final Long id) {
         final Optional<Activity> optional = activityDao.getById(id);
         Activity findOne = null;
         if (optional.isPresent()) {
@@ -88,7 +88,7 @@ public class ActivityService {
             responseDb.setActivityType(findOne.getType());
             responseDb.setVer(findOne.getVer());
             responseDb.setIsActive(findOne.getIsActive());
-            final DataResponseDto<ActivityDataDto> responseBe = new DataResponseDto<ActivityDataDto>();
+            final DataResDto<ActivityDataDto> responseBe = new DataResDto<ActivityDataDto>();
             responseBe.setData(responseDb);
             return responseBe;
         } else {
@@ -115,8 +115,8 @@ public class ActivityService {
     }
 
     @Transactional(rollbackOn = Exception.class)
-    public DeleteResponseDto deleteById(final Long id) {
-        final DeleteResponseDto responseBe = new DeleteResponseDto();
+    public DeleteResDto deleteById(final Long id) {
+        final DeleteResDto responseBe = new DeleteResDto();
         final Optional<Activity> optional = activityDao.getById(id);
         if (optional.isPresent()) {
             try {
