@@ -8,6 +8,5 @@ public class ActivityUpdateReqDto {
     private Long id;
     private String activityType;
     private Boolean isActive;
-    private Integer ver;
 
 }

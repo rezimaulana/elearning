@@ -73,7 +73,7 @@ class_hdr_subject varchar(200) NOT NULL,
 class_hdr_description text NOT NULL,
 
 instructor_id int NOT NULL,
-photo_id int,
+photo_id int NOT NULL,
 
 created_by int NOT NULL,
 created_at timestamp WITHOUT TIME ZONE NOT NULL,

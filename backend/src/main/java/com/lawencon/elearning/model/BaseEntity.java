@@ -34,15 +34,19 @@ public abstract class BaseEntity {
 	private LocalDateTime updatedAt;
 	
 	@Version
+	@Column(name = "ver")
 	private Integer ver;
 	
 	@Column(name = "is_active", nullable = false)
-	private Boolean isActive;
+	private Boolean isActive = true;
 	
+	public BaseEntity() {
+		ver = 0;
+	}
+
 	@PrePersist
 	public void prePersist() {
 		this.createdAt = LocalDateTime.now();
-		this.isActive = true;
 	}
 	@PreUpdate
 	public void preUpdate() {

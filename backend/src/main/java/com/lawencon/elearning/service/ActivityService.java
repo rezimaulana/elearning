@@ -63,7 +63,6 @@ public class ActivityService {
             try {
                 updateOne.setType(data.getActivityType());
                 updateOne.setUpdatedBy(1L);
-                updateOne.setVer(data.getVer());
                 updateOne.setIsActive(data.getIsActive());
                 updateOne = activityDao.update(updateOne);
                 final UpdateResponseDto responseDb = new UpdateResponseDto();
