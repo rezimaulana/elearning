@@ -14,9 +14,9 @@ import lombok.EqualsAndHashCode;
 public class File extends BaseEntity {
 
 	@Column(name = "file_code", nullable = false)
-	private String filecode;
+	private String fileCode;
 	
 	@Column(name = "file_ext", nullable = false)
-	private String ext;
+	private String fileExt;
 
 }

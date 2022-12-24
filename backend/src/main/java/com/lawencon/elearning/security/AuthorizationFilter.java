@@ -54,7 +54,7 @@ public class AuthorizationFilter extends OncePerRequestFilter{
 			} catch (Exception e) {
 				e.printStackTrace();
 				ErrorResDto errorResDto = new ErrorResDto();
-				errorResDto.setMessage("Invalid Token");
+				errorResDto.setMessage("Invalid Token!");
 				response.getWriter().append(objectMapper.writeValueAsString(errorResDto));
 				response.setContentType("application/json");
 				response.setStatus(HttpStatus.UNAUTHORIZED.value());

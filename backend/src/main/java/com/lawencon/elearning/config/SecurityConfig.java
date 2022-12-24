@@ -23,14 +23,16 @@ import com.lawencon.elearning.service.UserService;
 
 @Configuration
 public class SecurityConfig {
-	
+
 	@Bean
-	public AuthenticationManager authManager(HttpSecurity http, PasswordEncoder pwd, UserService userService) throws Exception{
-		return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(userService).passwordEncoder(pwd).and().build();
+	public AuthenticationManager authManager(HttpSecurity http, PasswordEncoder pwd, UserService userService)
+			throws Exception {
+		return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(userService)
+				.passwordEncoder(pwd).and().build();
 	}
-	
+
 	@Bean
-	public List<RequestMatcher> matchers(){
+	public List<RequestMatcher> matchers() {
 		final List<RequestMatcher> matchers = new ArrayList<>();
 		matchers.add(new AntPathRequestMatcher("/swagger-ui/**", HttpMethod.GET.name()));
 		matchers.add(new AntPathRequestMatcher("/v3/**", HttpMethod.GET.name()));
@@ -39,28 +41,30 @@ public class SecurityConfig {
 		matchers.add(new AntPathRequestMatcher("/register/**", HttpMethod.POST.name()));
 		return matchers;
 	}
-	
+
 	@Bean
 	public WebSecurityCustomizer customizer() {
 		return web -> matchers().forEach(r -> web.ignoring().requestMatchers(r));
 	}
-	
+
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http, AuthorizationFilter auth) throws Exception{
+	public SecurityFilterChain filterChain(HttpSecurity http, AuthorizationFilter auth) throws Exception {
 		http.cors();
 		http.csrf().disable();
 		http.addFilterAt(auth, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 	}
-	
+
 	@Bean
 	public WebMvcConfigurer webMvcConfigurer() {
 		return new WebMvcConfigurer() {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**").allowedOrigins("http://localhost:3001")
-				.allowedMethods(HttpMethod.GET.toString(),HttpMethod.POST.toString(),HttpMethod.PUT.toString(),HttpMethod.DELETE.toString());
+						.allowedMethods(HttpMethod.GET.toString(), HttpMethod.POST.toString(),
+								HttpMethod.PUT.toString(), HttpMethod.DELETE.toString());
 				WebMvcConfigurer.super.addCorsMappings(registry);
 			}
 		};
 	}
+	
 }

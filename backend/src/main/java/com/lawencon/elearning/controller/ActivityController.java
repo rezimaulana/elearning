@@ -3,6 +3,7 @@ package com.lawencon.elearning.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import com.lawencon.elearning.service.ActivityService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @SecurityRequirement(name = "bearerAuth")
+@PreAuthorize("hasAuthority('RLSAM')")
 @RestController
 @RequestMapping("activities")
 public class ActivityController {
@@ -57,7 +59,7 @@ public class ActivityController {
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
-	@DeleteMapping("remove")
+	@DeleteMapping
 	public ResponseEntity<DeleteResDto> delete(@RequestParam("id") final Long id) {
 		final DeleteResDto result = activityService.deleteById(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);

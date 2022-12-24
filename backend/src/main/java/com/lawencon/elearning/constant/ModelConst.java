@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter
 public enum ModelConst {
 		
-	ACTIVITY("Activity");
+	ACTIVITY("Activity"),
+	USER("User");
 	
 	private final String response;
 	

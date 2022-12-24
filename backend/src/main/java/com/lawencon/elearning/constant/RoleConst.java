@@ -6,16 +6,16 @@ import lombok.Getter;
 public enum RoleConst {
 
     SYSTEM("RLSYS", "System"),
-	SUPERADMIN("RLSAM", "Super Admin"), 
+	SUPER_ADMIN("RLSAM", "Super Admin"), 
     INSTRUCTOR("RLINS", "Instructor"),
 	STUDENT("RLSTD", "Student");
 
-	private final String roleCodeEnum;
-	private final String roleNameEnum;
+	private final String roleCode;
+	private final String roleName;
 	
-	RoleConst(final String roleCodeEnum, final String roleNameEnum) {
-		this.roleCodeEnum = roleCodeEnum;
-		this.roleNameEnum = roleNameEnum;
+	RoleConst(final String roleCode, final String roleName) {
+		this.roleCode = roleCode;
+		this.roleName = roleName;
 		}
 
 }

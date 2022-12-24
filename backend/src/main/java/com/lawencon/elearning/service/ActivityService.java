@@ -22,6 +22,7 @@ import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
 import com.lawencon.elearning.model.Activity;
+import com.lawencon.elearning.security.PrincipalService;
 import com.lawencon.elearning.util.GenerateCodeUtil;
 
 @Service
@@ -33,6 +34,9 @@ public class ActivityService {
     @Autowired
     private GenerateCodeUtil generateCodeUtil;
 
+    @Autowired
+    private PrincipalService principalService;
+
     @Transactional(rollbackOn = Exception.class)
     public TransactionResDto<InsertResDto> insert(final ActivityInsertReqDto data) {
         final TransactionResDto<InsertResDto> responseBe = new TransactionResDto<InsertResDto>();
@@ -40,7 +44,7 @@ public class ActivityService {
             final Activity activity = new Activity();
             activity.setCode("AC" + generateCodeUtil.generateDigit(3));
             activity.setType(data.getActivityType());
-            activity.setCreatedBy(1L);
+            activity.setCreatedBy(principalService.getPrincipal().getId());
             final Activity insertOne = activityDao.insert(activity);
             final InsertResDto responseDb = new InsertResDto();
             responseDb.setId(insertOne.getId());
@@ -62,7 +66,7 @@ public class ActivityService {
             updateOne = optional.get();
             try {
                 updateOne.setType(data.getActivityType());
-                updateOne.setUpdatedBy(1L);
+                updateOne.setUpdatedBy(principalService.getPrincipal().getId());
                 updateOne.setIsActive(data.getIsActive());
                 updateOne = activityDao.update(updateOne);
                 final UpdateResDto responseDb = new UpdateResDto();

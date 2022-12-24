@@ -18,9 +18,9 @@ import lombok.EqualsAndHashCode;
 public class Role extends BaseEntity {
 
     @Column(name = "role_code", nullable = false, length = 10, unique = true)
-    private String code;
+    private String roleCode;
 
     @Column(name = "role_name", nullable = false, length = 20)
-    private String name;
+    private String roleName;
 
 }

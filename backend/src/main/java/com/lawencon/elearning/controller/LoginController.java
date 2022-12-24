@@ -23,9 +23,6 @@ import com.lawencon.elearning.model.User;
 import com.lawencon.elearning.service.UserService;
 import com.lawencon.elearning.util.JwtUtil;
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-
-@SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("login")
 public class LoginController {
@@ -52,12 +49,12 @@ public class LoginController {
 		
 		claims.put("exp", calendar.getTime());
 		claims.put("id", user.get().getId());
-		claims.put("roleCode", user.get().getRole().getCode());
+		claims.put("roleCode", user.get().getRole().getRoleCode());
 		
 		LoginResDto dto = new LoginResDto();
 		dto.setId(user.get().getId());
 		dto.setFullname(user.get().getFullname());
-		dto.setRoleCode(user.get().getRole().getCode());
+		dto.setRoleCode(user.get().getRole().getRoleCode());
 		dto.setToken(jwtUtil.generateJwt(claims));
 		return new ResponseEntity<LoginResDto>(dto, HttpStatus.OK);
 	}
