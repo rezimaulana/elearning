@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @SecurityRequirement(name = "bearerAuth")
 @RestController
-@RequestMapping("class_hdr")
+@RequestMapping("class-hdr")
 public class ClassHdrController {
     
     @Autowired

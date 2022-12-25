@@ -8,9 +8,6 @@ import lombok.Data;
 public class ClassDtlInsertReqDto {
     
     @NotNull
-    private Long stdId;
-    
-    @NotNull
     private Long classHdrId;
 
 }

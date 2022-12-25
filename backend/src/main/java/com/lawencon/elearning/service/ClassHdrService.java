@@ -52,7 +52,7 @@ public class ClassHdrService {
         final TransactionResDto<InsertResDto> responseBe = new TransactionResDto<InsertResDto>();
         try {
             final ClassHdr classHdr = new ClassHdr();
-            classHdr.setClassHdrCode("CLASS"+generateCodeUtil.generateDigit(4));
+            classHdr.setClassHdrCode("CLASS"+generateCodeUtil.generateDigit(5));
             classHdr.setClassHdrSubject(data.getClassHdrSubject());
             classHdr.setClassHdrDescription(data.getClassHdrDescription());
             final Optional<User> optional = userDao.getById(data.getInsId());

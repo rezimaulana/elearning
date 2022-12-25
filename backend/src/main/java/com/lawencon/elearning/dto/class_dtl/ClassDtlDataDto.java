@@ -11,7 +11,7 @@ public class ClassDtlDataDto {
     private String stdEmail;
     private String stdFullname;
 
-    private String classHdrId;
+    private Long classHdrId;
     private String classHdrCode;
     private String classHdrSubject;
     private String classHdrDescription;
