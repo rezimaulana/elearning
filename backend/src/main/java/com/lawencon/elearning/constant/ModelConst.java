@@ -8,7 +8,8 @@ public enum ModelConst {
 	ACTIVITY("Activity"),
 	USER("User"),
 	CLASS_HDR("Class Header"),
-	CLASS_DTL("Class Detail");
+	CLASS_DTL("Class Detail"),
+	SCHEDULE("Schedule");
 	
 	private final String response;
 	
