@@ -6,7 +6,9 @@ import lombok.Getter;
 public enum ModelConst {
 		
 	ACTIVITY("Activity"),
-	USER("User");
+	USER("User"),
+	CLASS_HDR("Class Header"),
+	CLASS_DTL("Class Detail");
 	
 	private final String response;
 	

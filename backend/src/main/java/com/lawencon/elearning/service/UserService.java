@@ -148,7 +148,7 @@ public class UserService implements UserDetailsService {
             		updateOne.setFullname(data.getFullname());
             	}
             	if(data.getNewPassword()!=null && data.getOldPassword()!=null) {
-            		if(updateOne.getPassword().equals(data.getOldPassword())) {
+					if(passwordEncode.matches(data.getOldPassword(), updateOne.getPassword())) {
             			updateOne.setPassword(passwordEncode.encode(data.getNewPassword()));            			
             		} else {
             			throw new RuntimeException("New password didn't match old password!");
