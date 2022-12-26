@@ -139,7 +139,7 @@ public class UserService implements UserDetailsService {
 	@Transactional(rollbackOn = Exception.class)
     public TransactionResDto<UpdateResDto> update(final UserUpdateReqDto data) {
         final TransactionResDto<UpdateResDto> responseBe = new TransactionResDto<UpdateResDto>();
-        final Optional<User> optional = userDao.getById(data.getId());
+        final Optional<User> optional = userDao.getById(principalService.getPrincipal().getId());
         User updateOne = null;
         if (optional.isPresent()) {
             updateOne = optional.get();

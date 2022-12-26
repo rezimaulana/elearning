@@ -136,4 +136,23 @@ public class ActivityService {
         return responseBe;
     }
 
+    public DataResDto<ActivityDataDto> getByCode(final String activityCode) {
+        final Optional<Activity> optional = activityDao.getByCode(activityCode);
+        Activity findOne = null;
+        if (optional.isPresent()) {
+            findOne = optional.get();
+            final ActivityDataDto responseDb = new ActivityDataDto();
+            responseDb.setId(findOne.getId());
+            responseDb.setActivityCode(findOne.getCode());
+            responseDb.setActivityType(findOne.getType());
+            responseDb.setVer(findOne.getVer());
+            responseDb.setIsActive(findOne.getIsActive());
+            final DataResDto<ActivityDataDto> responseBe = new DataResDto<ActivityDataDto>();
+            responseBe.setData(responseDb);
+            return responseBe;
+        } else {
+            throw new RuntimeException(ModelConst.ACTIVITY.getResponse() + " not found!");
+        }
+    }
+
 }

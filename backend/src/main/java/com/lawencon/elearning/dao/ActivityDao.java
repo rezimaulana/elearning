@@ -41,4 +41,11 @@ public class ActivityDao extends BaseDao{
         return result > 0;
     }
 
+    public Optional<Activity> getByCode(final String activityCode) {
+		final String sql = "SELECT doc FROM Activity doc WHERE lower(doc.code) = lower(:activityCode)";
+		final Activity findOne = this.em.createQuery(sql, Activity.class).setParameter("activityCode", activityCode).getSingleResult();
+		final Optional<Activity> result = Optional.ofNullable(findOne);
+		return result;
+	}
+
 }

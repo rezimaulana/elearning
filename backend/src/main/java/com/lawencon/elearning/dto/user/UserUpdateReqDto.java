@@ -7,9 +7,6 @@ import lombok.Data;
 @Data
 public class UserUpdateReqDto {
     
-    @NotNull
-	private Long id;
-    
     private String fullname;
     
     private String oldPassword;

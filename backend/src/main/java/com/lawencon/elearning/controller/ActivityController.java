@@ -27,7 +27,6 @@ import com.lawencon.elearning.service.ActivityService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @SecurityRequirement(name = "bearerAuth")
-@PreAuthorize("hasAuthority('RLSAM')")
 @RestController
 @RequestMapping("activities")
 public class ActivityController {
@@ -35,33 +34,45 @@ public class ActivityController {
 	@Autowired
 	private ActivityService activityService;
 	
+	@PreAuthorize("hasAuthority('RLSAM')")
 	@PostMapping
 	public ResponseEntity<TransactionResDto<InsertResDto>> insert(@RequestBody final ActivityInsertReqDto data){
 		final TransactionResDto<InsertResDto> result = activityService.insert(data);
 		return new ResponseEntity<>(result, HttpStatus.CREATED);
 	}
 
+	@PreAuthorize("hasAuthority('RLSAM')")
 	@PutMapping
 	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody final ActivityUpdateReqDto data){
 		final TransactionResDto<UpdateResDto> result = activityService.update(data);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('RLSAM')")
 	@GetMapping
 	public ResponseEntity<DataResDto<ActivityDataDto>> getById(@RequestParam(required = true) final Long id){
 		final DataResDto<ActivityDataDto> result = activityService.getById(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
+	@PreAuthorize("hasAuthority('RLSAM')")
 	@GetMapping("data")
 	public ResponseEntity<ActivityListDataDto> getAll() {
 		final ActivityListDataDto result = activityService.getAll();
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
+	@PreAuthorize("hasAuthority('RLSAM')")
 	@DeleteMapping
 	public ResponseEntity<DeleteResDto> delete(@RequestParam("id") final Long id) {
 		final DeleteResDto result = activityService.deleteById(id);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	@PreAuthorize("hasAnyAuthority('RLSAM', 'RLINS', 'RLSTD')")
+	@GetMapping("code")
+	public ResponseEntity<DataResDto<ActivityDataDto>> getByCode(@RequestParam(required = true) final String code){
+		final DataResDto<ActivityDataDto> result = activityService.getByCode(code);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
