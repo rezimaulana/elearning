@@ -73,4 +73,21 @@ public class AttendanceDao extends BaseDao{
         return result;
     }
 
+    public List<Attendance> valAttendance(final Long scheduleId, final Long classDtlId) {
+        final String sql = "SELECT doc FROM Attendance doc "
+                + "INNER JOIN FETCH doc.classDtl dtl "
+                + "INNER JOIN FETCH dtl.student std "
+                + "INNER JOIN FETCH dtl.classHdr hdr "
+                + "INNER JOIN FETCH hdr.instructor ins "
+                + "INNER JOIN FETCH doc.schedule schedule "
+                + "INNER JOIN FETCH schedule.material material "
+                + "INNER JOIN FETCH material.activity activity "
+                + "WHERE schedule.id = :scheduleId AND dtl.id = :classDtlId AND doc.approval = TRUE ";
+        final List<Attendance> result = this.em.createQuery(sql, Attendance.class)
+                .setParameter("scheduleId", scheduleId)
+                .setParameter("classDtlId", classDtlId)
+                .getResultList();
+        return result;
+    }
+
 }
