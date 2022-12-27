@@ -1,14 +1,14 @@
-package com.lawencon.elearning.dto.attendance;
+package com.lawencon.elearning.dto.submission;
 
 import java.time.LocalDateTime;
 
 import lombok.Data;
 
 @Data
-public class AttendanceDataDto {
+public class SubmissionDataDto {
     
     private Long id;
-    private Boolean approval;
+    private Float score;
 
     private Long classDtlId;
     private Long stdId;
@@ -30,6 +30,8 @@ public class AttendanceDataDto {
     private Long activityId;
     private String activityCode;
     private String activityType;
+
+    private Long fileId;
 
     private Boolean isActive;
     private Integer ver;

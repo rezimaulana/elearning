@@ -18,6 +18,7 @@ import com.lawencon.elearning.dto.attendance.AttendanceDataDto;
 import com.lawencon.elearning.dto.attendance.AttendanceInsertReqDto;
 import com.lawencon.elearning.dto.attendance.AttendanceListDataDto;
 import com.lawencon.elearning.dto.attendance.AttendanceUpdateReqDto;
+import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
@@ -95,6 +96,43 @@ public class AttendanceService {
             }
         }
         return responseBe;
+    }
+
+    public DataResDto<AttendanceDataDto> getById(final Long id) {
+        final Optional<Attendance> optional = attendanceDao.getById(id);
+        Attendance findOne = null;
+        if (optional.isPresent()) {
+            findOne = optional.get();
+            final AttendanceDataDto responseDb = new AttendanceDataDto();
+            responseDb.setId(findOne.getId());
+            responseDb.setApproval(findOne.getApproval());
+            responseDb.setClassDtlId(findOne.getClassDtl().getId());
+            responseDb.setStdId(findOne.getClassDtl().getStudent().getId());
+            responseDb.setStdEmail(findOne.getClassDtl().getStudent().getEmail());
+            responseDb.setStdFullname(findOne.getClassDtl().getStudent().getFullname());
+            responseDb.setClassHdrId(findOne.getClassDtl().getClassHdr().getId());
+            responseDb.setClassHdrCode(findOne.getClassDtl().getClassHdr().getClassHdrCode());
+            responseDb.setClassHdrSubject(findOne.getClassDtl().getClassHdr().getClassHdrSubject());
+            responseDb.setInsId(findOne.getClassDtl().getClassHdr().getInstructor().getId());
+            responseDb.setInsEmail(findOne.getClassDtl().getClassHdr().getInstructor().getEmail());
+            responseDb.setInsFullname(findOne.getClassDtl().getClassHdr().getInstructor().getFullname());
+            responseDb.setShceduleId(findOne.getSchedule().getId());
+            responseDb.setStartTime(findOne.getSchedule().getStartTime());
+            responseDb.setEndTime(findOne.getSchedule().getEndTime());
+            responseDb.setMaterialId(findOne.getSchedule().getMaterial().getId());
+            responseDb.setMaterialCode(findOne.getSchedule().getMaterial().getMaterialCode());
+            responseDb.setMaterialSubject(findOne.getSchedule().getMaterial().getMaterialSubject());
+            responseDb.setActivityId(findOne.getSchedule().getMaterial().getActivity().getId());
+            responseDb.setActivityCode(findOne.getSchedule().getMaterial().getActivity().getCode());
+            responseDb.setActivityType(findOne.getSchedule().getMaterial().getActivity().getType());
+            responseDb.setVer(findOne.getVer());
+            responseDb.setIsActive(findOne.getIsActive());
+            final DataResDto<AttendanceDataDto> responseBe = new DataResDto<AttendanceDataDto>();
+            responseBe.setData(responseDb);
+            return responseBe;
+        } else {
+            throw new RuntimeException(ModelConst.ATTENDANCE.getResponse() + " not found!");
+        }
     }
 
     public AttendanceListDataDto getAllByInstructor(final Long scheduleId, final Long classHdrId) {

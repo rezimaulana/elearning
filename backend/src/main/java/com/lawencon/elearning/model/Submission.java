@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "submissions")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Submissions extends BaseEntity{
+public class Submission extends BaseEntity{
     
     @Column(name = "score")
 	private Float score;

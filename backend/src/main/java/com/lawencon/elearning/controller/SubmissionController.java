@@ -12,59 +12,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lawencon.elearning.dto.attendance.AttendanceDataDto;
-import com.lawencon.elearning.dto.attendance.AttendanceInsertReqDto;
-import com.lawencon.elearning.dto.attendance.AttendanceListDataDto;
-import com.lawencon.elearning.dto.attendance.AttendanceUpdateReqDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
-import com.lawencon.elearning.service.AttendanceService;
+import com.lawencon.elearning.dto.submission.SubmissionDataDto;
+import com.lawencon.elearning.dto.submission.SubmissionInsertReqDto;
+import com.lawencon.elearning.dto.submission.SubmissionListDataDto;
+import com.lawencon.elearning.dto.submission.SubmissionUpdateReqDto;
+import com.lawencon.elearning.service.SubmissionService;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @SecurityRequirement(name = "bearerAuth")
 @RestController
-@RequestMapping("attendances")
-public class AttendanceController {
+@RequestMapping("submissions")
+public class SubmissionController {
     
     @Autowired
-    private AttendanceService attendanceService;
+    private SubmissionService submissionService;
 
     @PreAuthorize("hasAuthority('RLSTD')")
 	@PostMapping
-	public ResponseEntity<TransactionResDto<InsertResDto>> insert(@RequestBody final AttendanceInsertReqDto data){
-		final TransactionResDto<InsertResDto> result = attendanceService.insert(data);
+	public ResponseEntity<TransactionResDto<InsertResDto>> insert(@RequestBody final SubmissionInsertReqDto data){
+		final TransactionResDto<InsertResDto> result = submissionService.insert(data);
 		return new ResponseEntity<>(result, HttpStatus.CREATED);
 	}
 
 	@PreAuthorize("hasAuthority('RLINS')")
 	@PutMapping
-	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody final AttendanceUpdateReqDto data){
-		final TransactionResDto<UpdateResDto> result = attendanceService.update(data);
+	public ResponseEntity<TransactionResDto<UpdateResDto>> update(@RequestBody final SubmissionUpdateReqDto data){
+		final TransactionResDto<UpdateResDto> result = submissionService.update(data);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasAuthority('RLINS')")
 	@GetMapping
-	public ResponseEntity<DataResDto<AttendanceDataDto>> getById(@RequestParam(required = true) final Long id){
-		final DataResDto<AttendanceDataDto> result = attendanceService.getById(id);
+	public ResponseEntity<DataResDto<SubmissionDataDto>> getById(@RequestParam(required = true) final Long id){
+		final DataResDto<SubmissionDataDto> result = submissionService.getById(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasAuthority('RLINS')")
 	@GetMapping("instructor")
-	public ResponseEntity<AttendanceListDataDto> getAllByInstructor(@RequestParam final Long scheduleId, @RequestParam final Long classHdrId) {
-		final AttendanceListDataDto result = attendanceService.getAllByInstructor(scheduleId, classHdrId);
+	public ResponseEntity<SubmissionListDataDto> getAllByInstructor(@RequestParam final Long scheduleId, @RequestParam final Long classHdrId) {
+		final SubmissionListDataDto result = submissionService.getAllByInstructor(scheduleId, classHdrId);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasAuthority('RLSTD')")
 	@GetMapping("student")
-	public ResponseEntity<AttendanceListDataDto> getAllByStudent(@RequestParam final Long scheduleId, @RequestParam final Long classDtlId) {
-		final AttendanceListDataDto result = attendanceService.getAllByStudent(scheduleId, classDtlId);
+	public ResponseEntity<SubmissionListDataDto> getAllByStudent(@RequestParam final Long scheduleId, @RequestParam final Long classDtlId) {
+		final SubmissionListDataDto result = submissionService.getAllByStudent(scheduleId, classDtlId);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 }
+
