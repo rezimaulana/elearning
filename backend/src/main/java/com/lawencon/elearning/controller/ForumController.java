@@ -16,6 +16,7 @@ import com.lawencon.elearning.dto.forum.ForumDataDto;
 import com.lawencon.elearning.dto.forum.ForumInsertReqDto;
 import com.lawencon.elearning.dto.forum.ForumUpdateReqDto;
 import com.lawencon.elearning.dto.response.DataListResDto;
+import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
@@ -45,12 +46,12 @@ public class ForumController {
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
-	// @PreAuthorize("hasAnyAuthority('RLINS', 'RLSTD')")
-	// @GetMapping
-	// public ResponseEntity<DataResDto<SubmissionDataDto>> getById(@RequestParam(required = true) final Long id){
-	// 	final DataResDto<SubmissionDataDto> result = forumService.getById(id);
-	// 	return new ResponseEntity<>(result, HttpStatus.OK);
-	// }
+    @PreAuthorize("hasAnyAuthority('RLSAM', 'RLINS', 'RLSTD')")
+	@GetMapping
+	public ResponseEntity<DataResDto<ForumDataDto>> getById(@RequestParam(required = true) final Long id){
+		final DataResDto<ForumDataDto> result = forumService.getById(id);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
 
 	@PreAuthorize("hasAuthority('RLINS')")
 	@GetMapping("instructor")

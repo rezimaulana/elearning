@@ -3,10 +3,12 @@ package com.lawencon.elearning.dao;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.lawencon.elearning.model.Schedule;
 
+@Profile("hql")
 @Repository
 public class ScheduleDao extends BaseDao {
 
