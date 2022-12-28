@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
 import com.lawencon.elearning.dto.submission.SubmissionDataDto;
 import com.lawencon.elearning.dto.submission.SubmissionInsertReqDto;
-import com.lawencon.elearning.dto.submission.SubmissionListDataDto;
 import com.lawencon.elearning.dto.submission.SubmissionUpdateReqDto;
 import com.lawencon.elearning.service.SubmissionService;
 
@@ -55,15 +55,15 @@ public class SubmissionController {
 
 	@PreAuthorize("hasAuthority('RLINS')")
 	@GetMapping("instructor")
-	public ResponseEntity<SubmissionListDataDto> getAllByInstructor(@RequestParam final Long scheduleId, @RequestParam final Long classHdrId) {
-		final SubmissionListDataDto result = submissionService.getAllByInstructor(scheduleId, classHdrId);
+	public ResponseEntity<DataListResDto<SubmissionDataDto>> getAllByInstructor(@RequestParam final Long scheduleId, @RequestParam final Long classHdrId) {
+		final DataListResDto<SubmissionDataDto> result = submissionService.getAllByInstructor(scheduleId, classHdrId);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasAuthority('RLSTD')")
 	@GetMapping("student")
-	public ResponseEntity<SubmissionListDataDto> getAllByStudent(@RequestParam final Long scheduleId, @RequestParam final Long classDtlId) {
-		final SubmissionListDataDto result = submissionService.getAllByStudent(scheduleId, classDtlId);
+	public ResponseEntity<DataListResDto<SubmissionDataDto>> getAllByStudent(@RequestParam final Long scheduleId, @RequestParam final Long classDtlId) {
+		final DataListResDto<SubmissionDataDto> result = submissionService.getAllByStudent(scheduleId, classDtlId);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 

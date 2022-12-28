@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lawencon.elearning.dto.class_hdr.ClassHdrDataDto;
 import com.lawencon.elearning.dto.class_hdr.ClassHdrInsertReqDto;
-import com.lawencon.elearning.dto.class_hdr.ClassHdrListDataDto;
 import com.lawencon.elearning.dto.class_hdr.ClassHdrUpdateReqDto;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
@@ -55,15 +55,15 @@ public class ClassHdrController {
 
     @PreAuthorize("hasAnyAuthority('RLSAM', 'RLINS', 'RLSTD')")
 	@GetMapping("data")
-	public ResponseEntity<ClassHdrListDataDto> getAll() {
-		final ClassHdrListDataDto result = classHdrService.getAll();
+	public ResponseEntity<DataListResDto<ClassHdrDataDto>> getAll() {
+		final DataListResDto<ClassHdrDataDto> result = classHdrService.getAll();
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasAuthority('RLINS')")
 	@GetMapping("instructor")
-	public ResponseEntity<ClassHdrListDataDto> getAllByInstructor() {
-		final ClassHdrListDataDto result = classHdrService.getAllByInstructor();
+	public ResponseEntity<DataListResDto<ClassHdrDataDto>> getAllByInstructor() {
+		final DataListResDto<ClassHdrDataDto> result = classHdrService.getAllByInstructor();
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 

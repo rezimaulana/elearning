@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
+import com.lawencon.elearning.dto.schedule.ScheduleDataDto;
 import com.lawencon.elearning.dto.schedule.ScheduleInsertReqDto;
-import com.lawencon.elearning.dto.schedule.ScheduleListDataDto;
 import com.lawencon.elearning.dto.schedule.ScheduleUpdateReqDto;
 import com.lawencon.elearning.service.ScheduleService;
 
@@ -46,8 +47,8 @@ public class ScheduleController {
 
     @PreAuthorize("hasAnyAuthority('RLSAM', 'RLINS', 'RLSTD')")
     @GetMapping("user")
-	public ResponseEntity<ScheduleListDataDto> getAll(@RequestParam("activity") final Long activityId, @RequestParam("class-hdr") final Long classHdrId) {
-		final ScheduleListDataDto result = scheduleService.getAllByUser(activityId, classHdrId);
+	public ResponseEntity<DataListResDto<ScheduleDataDto>> getAll(@RequestParam("activity") final Long activityId, @RequestParam("class-hdr") final Long classHdrId) {
+		final DataListResDto<ScheduleDataDto> result = scheduleService.getAllByUser(activityId, classHdrId);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 

@@ -18,12 +18,12 @@ import com.lawencon.elearning.dao.ClassHdrDao;
 import com.lawencon.elearning.dao.FileDao;
 import com.lawencon.elearning.dao.MaterialDao;
 import com.lawencon.elearning.dao.ScheduleDao;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
 import com.lawencon.elearning.dto.schedule.ScheduleDataDto;
 import com.lawencon.elearning.dto.schedule.ScheduleInsertReqDto;
-import com.lawencon.elearning.dto.schedule.ScheduleListDataDto;
 import com.lawencon.elearning.dto.schedule.ScheduleUpdateReqDto;
 import com.lawencon.elearning.model.Activity;
 import com.lawencon.elearning.model.Attachment;
@@ -157,7 +157,7 @@ public class ScheduleService {
         return responseBe;
     }
 
-    public ScheduleListDataDto getAllByUser(final Long activityId, final Long classHdrId) {
+    public DataListResDto<ScheduleDataDto> getAllByUser(final Long activityId, final Long classHdrId) {
         final List<ScheduleDataDto> responseDb = new ArrayList<>();
         final List<Schedule> find = scheduleDao.getAllByUser(activityId, classHdrId);
         for (int i = 0; i < find.size(); i++) {
@@ -180,7 +180,7 @@ public class ScheduleService {
             result.setIsActive(schedule.getIsActive());
             responseDb.add(result);
         }
-        final ScheduleListDataDto responseBe = new ScheduleListDataDto();
+        final DataListResDto<ScheduleDataDto> responseBe = new DataListResDto<ScheduleDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }

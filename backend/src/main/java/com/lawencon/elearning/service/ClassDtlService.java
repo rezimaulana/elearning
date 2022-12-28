@@ -16,7 +16,7 @@ import com.lawencon.elearning.dao.ClassHdrDao;
 import com.lawencon.elearning.dao.UserDao;
 import com.lawencon.elearning.dto.class_dtl.ClassDtlDataDto;
 import com.lawencon.elearning.dto.class_dtl.ClassDtlInsertReqDto;
-import com.lawencon.elearning.dto.class_dtl.ClassDtlListDataDto;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
@@ -94,7 +94,7 @@ public class ClassDtlService {
         }
     }
 
-    public ClassDtlListDataDto getAllByStudent() {
+    public DataListResDto<ClassDtlDataDto> getAllByStudent() {
         final List<ClassDtlDataDto> responseDb = new ArrayList<>();
         final List<ClassDtl> find = classDtlDao.getAllByStudent(principalService.getPrincipal().getId());
         for (int i = 0; i < find.size(); i++) {
@@ -116,7 +116,7 @@ public class ClassDtlService {
             result.setIsActive(classDtl.getIsActive());
             responseDb.add(result);
         }
-        final ClassDtlListDataDto responseBe = new ClassDtlListDataDto();
+        final DataListResDto<ClassDtlDataDto> responseBe = new DataListResDto<ClassDtlDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }

@@ -19,13 +19,13 @@ import com.lawencon.elearning.constant.RoleConst;
 import com.lawencon.elearning.dao.FileDao;
 import com.lawencon.elearning.dao.RoleDao;
 import com.lawencon.elearning.dao.UserDao;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
 import com.lawencon.elearning.dto.user.UserDataDto;
 import com.lawencon.elearning.dto.user.UserInsertReqDto;
-import com.lawencon.elearning.dto.user.UserListDataDto;
 import com.lawencon.elearning.dto.user.UserUpdateReqDto;
 import com.lawencon.elearning.model.File;
 import com.lawencon.elearning.model.Role;
@@ -202,7 +202,7 @@ public class UserService implements UserDetailsService {
         }
     }
 	
-	 public UserListDataDto getAll() {
+	 public DataListResDto<UserDataDto> getAll() {
 	        final List<UserDataDto> responseDb = new ArrayList<>();
 	        final List<User> find = userDao.getAll();
 	        for (int i = 0; i < find.size(); i++) {
@@ -221,7 +221,7 @@ public class UserService implements UserDetailsService {
 	            result.setIsActive(user.getIsActive());
 	            responseDb.add(result);
 	        }
-	        final UserListDataDto responseBe = new UserListDataDto();
+	        final DataListResDto<UserDataDto> responseBe = new DataListResDto<UserDataDto>();
 	        responseBe.setData(responseDb);
 	        return responseBe;
 	   }

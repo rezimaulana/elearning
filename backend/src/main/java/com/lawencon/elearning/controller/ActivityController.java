@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lawencon.elearning.dto.activity.ActivityDataDto;
 import com.lawencon.elearning.dto.activity.ActivityInsertReqDto;
-import com.lawencon.elearning.dto.activity.ActivityListDataDto;
 import com.lawencon.elearning.dto.activity.ActivityUpdateReqDto;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.DeleteResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
@@ -57,8 +57,8 @@ public class ActivityController {
 
 	@PreAuthorize("hasAuthority('RLSAM')")
 	@GetMapping("data")
-	public ResponseEntity<ActivityListDataDto> getAll() {
-		final ActivityListDataDto result = activityService.getAll();
+	public ResponseEntity<DataListResDto<ActivityDataDto>> getAll() {
+		final DataListResDto<ActivityDataDto> result = activityService.getAll();
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 

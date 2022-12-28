@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
 import com.lawencon.elearning.dto.user.UserDataDto;
 import com.lawencon.elearning.dto.user.UserInsertReqDto;
-import com.lawencon.elearning.dto.user.UserListDataDto;
 import com.lawencon.elearning.dto.user.UserUpdateReqDto;
 import com.lawencon.elearning.service.UserService;
 
@@ -55,8 +55,8 @@ public class UserController {
 
 	@PreAuthorize("hasAuthority('RLSAM')")
 	@GetMapping("data")
-	public ResponseEntity<UserListDataDto> getAll() {
-		final UserListDataDto result = userService.getAll();
+	public ResponseEntity<DataListResDto<UserDataDto>> getAll() {
+		final DataListResDto<UserDataDto> result = userService.getAll();
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 

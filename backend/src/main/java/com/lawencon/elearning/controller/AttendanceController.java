@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lawencon.elearning.dto.attendance.AttendanceDataDto;
 import com.lawencon.elearning.dto.attendance.AttendanceInsertReqDto;
-import com.lawencon.elearning.dto.attendance.AttendanceListDataDto;
 import com.lawencon.elearning.dto.attendance.AttendanceUpdateReqDto;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
@@ -55,15 +55,15 @@ public class AttendanceController {
 
 	@PreAuthorize("hasAuthority('RLINS')")
 	@GetMapping("instructor")
-	public ResponseEntity<AttendanceListDataDto> getAllByInstructor(@RequestParam final Long scheduleId, @RequestParam final Long classHdrId) {
-		final AttendanceListDataDto result = attendanceService.getAllByInstructor(scheduleId, classHdrId);
+	public ResponseEntity<DataListResDto<AttendanceDataDto>> getAllByInstructor(@RequestParam final Long scheduleId, @RequestParam final Long classHdrId) {
+		final DataListResDto<AttendanceDataDto> result = attendanceService.getAllByInstructor(scheduleId, classHdrId);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasAuthority('RLSTD')")
 	@GetMapping("student")
-	public ResponseEntity<AttendanceListDataDto> getAllByStudent(@RequestParam final Long scheduleId, @RequestParam final Long classDtlId) {
-		final AttendanceListDataDto result = attendanceService.getAllByStudent(scheduleId, classDtlId);
+	public ResponseEntity<DataListResDto<AttendanceDataDto>> getAllByStudent(@RequestParam final Long scheduleId, @RequestParam final Long classDtlId) {
+		final DataListResDto<AttendanceDataDto> result = attendanceService.getAllByStudent(scheduleId, classDtlId);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 

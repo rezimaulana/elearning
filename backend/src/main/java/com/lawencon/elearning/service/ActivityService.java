@@ -14,8 +14,8 @@ import com.lawencon.elearning.constant.ResponseConst;
 import com.lawencon.elearning.dao.ActivityDao;
 import com.lawencon.elearning.dto.activity.ActivityDataDto;
 import com.lawencon.elearning.dto.activity.ActivityInsertReqDto;
-import com.lawencon.elearning.dto.activity.ActivityListDataDto;
 import com.lawencon.elearning.dto.activity.ActivityUpdateReqDto;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.DeleteResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
@@ -100,7 +100,7 @@ public class ActivityService {
         }
     }
 
-    public ActivityListDataDto getAll() {
+    public DataListResDto<ActivityDataDto> getAll() {
         final List<ActivityDataDto> responseDb = new ArrayList<>();
         final List<Activity> find = activityDao.getAll();
         for (int i = 0; i < find.size(); i++) {
@@ -113,7 +113,7 @@ public class ActivityService {
             result.setIsActive(activity.getIsActive());
             responseDb.add(result);
         }
-        final ActivityListDataDto responseBe = new ActivityListDataDto();
+        final DataListResDto<ActivityDataDto> responseBe = new DataListResDto<ActivityDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }

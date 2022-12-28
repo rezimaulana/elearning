@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lawencon.elearning.dto.class_dtl.ClassDtlDataDto;
 import com.lawencon.elearning.dto.class_dtl.ClassDtlInsertReqDto;
-import com.lawencon.elearning.dto.class_dtl.ClassDtlListDataDto;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
@@ -45,8 +45,8 @@ public class ClassDtlController {
 
     @PreAuthorize("hasAuthority('RLSTD')")
 	@GetMapping("student")
-	public ResponseEntity<ClassDtlListDataDto> getAllByStudent() {
-		final ClassDtlListDataDto result = classDtlService.getAllByStudent();
+	public ResponseEntity<DataListResDto<ClassDtlDataDto>> getAllByStudent() {
+		final DataListResDto<ClassDtlDataDto> result = classDtlService.getAllByStudent();
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 

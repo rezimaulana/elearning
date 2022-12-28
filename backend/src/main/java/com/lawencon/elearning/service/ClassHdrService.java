@@ -17,8 +17,8 @@ import com.lawencon.elearning.dao.FileDao;
 import com.lawencon.elearning.dao.UserDao;
 import com.lawencon.elearning.dto.class_hdr.ClassHdrDataDto;
 import com.lawencon.elearning.dto.class_hdr.ClassHdrInsertReqDto;
-import com.lawencon.elearning.dto.class_hdr.ClassHdrListDataDto;
 import com.lawencon.elearning.dto.class_hdr.ClassHdrUpdateReqDto;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
@@ -151,7 +151,7 @@ public class ClassHdrService {
         }
     }
 
-    public ClassHdrListDataDto getAll() {
+    public DataListResDto<ClassHdrDataDto> getAll() {
         final List<ClassHdrDataDto> responseDb = new ArrayList<>();
         final List<ClassHdr> find = classHdrDao.getAll();
         for (int i = 0; i < find.size(); i++) {
@@ -169,12 +169,12 @@ public class ClassHdrService {
             result.setIsActive(classHdr.getIsActive());
             responseDb.add(result);
         }
-        final ClassHdrListDataDto responseBe = new ClassHdrListDataDto();
+        final DataListResDto<ClassHdrDataDto> responseBe = new DataListResDto<ClassHdrDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }
 
-    public ClassHdrListDataDto getAllByInstructor() {
+    public DataListResDto<ClassHdrDataDto> getAllByInstructor() {
         final List<ClassHdrDataDto> responseDb = new ArrayList<>();
         final List<ClassHdr> find = classHdrDao.getAllByInstructor(principalService.getPrincipal().getId());
         for (int i = 0; i < find.size(); i++) {
@@ -192,7 +192,7 @@ public class ClassHdrService {
             result.setIsActive(classHdr.getIsActive());
             responseDb.add(result);
         }
-        final ClassHdrListDataDto responseBe = new ClassHdrListDataDto();
+        final DataListResDto<ClassHdrDataDto> responseBe = new DataListResDto<ClassHdrDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }

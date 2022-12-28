@@ -16,13 +16,13 @@ import com.lawencon.elearning.dao.ClassDtlDao;
 import com.lawencon.elearning.dao.FileDao;
 import com.lawencon.elearning.dao.ScheduleDao;
 import com.lawencon.elearning.dao.SubmissionDao;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
 import com.lawencon.elearning.dto.response.UpdateResDto;
 import com.lawencon.elearning.dto.submission.SubmissionDataDto;
 import com.lawencon.elearning.dto.submission.SubmissionInsertReqDto;
-import com.lawencon.elearning.dto.submission.SubmissionListDataDto;
 import com.lawencon.elearning.dto.submission.SubmissionUpdateReqDto;
 import com.lawencon.elearning.model.ClassDtl;
 import com.lawencon.elearning.model.File;
@@ -159,7 +159,7 @@ public class SubmissionService {
         }
     }
 
-    public SubmissionListDataDto getAllByInstructor(final Long scheduleId, final Long classHdrId) {
+    public DataListResDto<SubmissionDataDto> getAllByInstructor(final Long scheduleId, final Long classHdrId) {
         final List<SubmissionDataDto> responseDb = new ArrayList<>();
         final List<Submission> find = submissionDao.getAllByInstructor(scheduleId, classHdrId);
         for (int i = 0; i < find.size(); i++) {
@@ -191,12 +191,12 @@ public class SubmissionService {
             result.setIsActive(submission.getIsActive());
             responseDb.add(result);
         }
-        final SubmissionListDataDto responseBe = new SubmissionListDataDto();
+        final DataListResDto<SubmissionDataDto> responseBe = new DataListResDto<SubmissionDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }
 
-    public SubmissionListDataDto getAllByStudent(final Long scheduleId, final Long classDtlId) {
+    public DataListResDto<SubmissionDataDto> getAllByStudent(final Long scheduleId, final Long classDtlId) {
         final List<SubmissionDataDto> responseDb = new ArrayList<>();
         final List<Submission> find = submissionDao.getAllByStudent(scheduleId, classDtlId);
         for (int i = 0; i < find.size(); i++) {
@@ -228,7 +228,7 @@ public class SubmissionService {
             result.setIsActive(submissions.getIsActive());
             responseDb.add(result);
         }
-        final SubmissionListDataDto responseBe = new SubmissionListDataDto();
+        final DataListResDto<SubmissionDataDto> responseBe = new DataListResDto<SubmissionDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }

@@ -16,8 +16,8 @@ import com.lawencon.elearning.dao.ClassDtlDao;
 import com.lawencon.elearning.dao.ScheduleDao;
 import com.lawencon.elearning.dto.attendance.AttendanceDataDto;
 import com.lawencon.elearning.dto.attendance.AttendanceInsertReqDto;
-import com.lawencon.elearning.dto.attendance.AttendanceListDataDto;
 import com.lawencon.elearning.dto.attendance.AttendanceUpdateReqDto;
+import com.lawencon.elearning.dto.response.DataListResDto;
 import com.lawencon.elearning.dto.response.DataResDto;
 import com.lawencon.elearning.dto.response.InsertResDto;
 import com.lawencon.elearning.dto.response.TransactionResDto;
@@ -135,7 +135,7 @@ public class AttendanceService {
         }
     }
 
-    public AttendanceListDataDto getAllByInstructor(final Long scheduleId, final Long classHdrId) {
+    public DataListResDto<AttendanceDataDto> getAllByInstructor(final Long scheduleId, final Long classHdrId) {
         final List<AttendanceDataDto> responseDb = new ArrayList<>();
         final List<Attendance> find = attendanceDao.getAllByInstructor(scheduleId, classHdrId);
         for (int i = 0; i < find.size(); i++) {
@@ -166,12 +166,12 @@ public class AttendanceService {
             result.setIsActive(attendance.getIsActive());
             responseDb.add(result);
         }
-        final AttendanceListDataDto responseBe = new AttendanceListDataDto();
+        final DataListResDto<AttendanceDataDto> responseBe = new DataListResDto<AttendanceDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }
 
-    public AttendanceListDataDto getAllByStudent(final Long scheduleId, final Long classDtlId) {
+    public DataListResDto<AttendanceDataDto> getAllByStudent(final Long scheduleId, final Long classDtlId) {
         final List<AttendanceDataDto> responseDb = new ArrayList<>();
         final List<Attendance> find = attendanceDao.getAllByStudent(scheduleId, classDtlId);
         for (int i = 0; i < find.size(); i++) {
@@ -202,7 +202,7 @@ public class AttendanceService {
             result.setIsActive(attendance.getIsActive());
             responseDb.add(result);
         }
-        final AttendanceListDataDto responseBe = new AttendanceListDataDto();
+        final DataListResDto<AttendanceDataDto> responseBe = new DataListResDto<AttendanceDataDto>();
         responseBe.setData(responseDb);
         return responseBe;
     }
