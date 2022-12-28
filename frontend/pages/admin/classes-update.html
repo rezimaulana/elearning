@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/styles/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-2">
+        <div class="container-fluid">
+            <a class="navbar-brand">E-Learning</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" aria-current="page" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Data Master
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="./classes.html">Kelas</a></li>
+                            <li><a class="dropdown-item" href="./users.html">User</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Akun</a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                        <li><a class="dropdown-item" href="./profile.html">Profil</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" id="btnLogoutAdmin">Logout</a></li>
+                    </ul>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid bg-light">
+        <div class="row g-1">
+            <div class="col-md-10 offset-md-1">
+                <div class="card">
+                    <div class="card-header">Perbarui Kelas</div>
+                    <div class="card-body">
+                        <a href="./classes.html" class="btn btn-secondary mb-4">Kembali</a>
+                        <form class="row">
+                            <div class="col-md-2 mt-1 mb-1">
+                                <label for="subject" class="form-label">Subjek<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-md-4 mt-1 mb-1">
+                                <input type="text" name="subject" id="subject" class="form-control">
+                            </div>
+                            <div class="col-md-2 mt-1 mb-1">
+                                <label for="description" class="form-label">Deskripsi<span
+                                        class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-md-4 mt-1 mb-1">
+                                <textarea name="description" id="description" class="form-control"></textarea>
+                            </div>
+                            <div class="col-md-2 mt-1 mb-1">
+                                <label for="file" class="form-label">Logo<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-md-4 mt-1 mb-1">
+                                <input type="file" name="file" id="file" class="form-control">
+                            </div>
+                            <div class="col-md-2 mt-1 mb-1">
+                                <label for="instructorId" class="form-label">Guru<span
+                                        class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-md-4 mt-1 mb-1">
+                                <select name="instructorId" id="instructorId" class="form-select">
+                                    <option>Pilih Guru</option>
+                                    <option value="1">yanuar@email.com</option>
+                                    <option value="2">aldi@email.com</option>
+                                    <option value="3">anasda@email.com</option>
+                                    <option value="4">ghani@email.com</option>
+                                    <option value="5">gilang@email.com</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 mt-1 mb-1">
+                                <label for="isActive" class="form-label">Aktif<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-md-4 mt-1 mb-1">
+                                <input class="form-check-input" type="radio" name="isActive" id="true" checked>
+                                <label class="form-check-label" for="true">
+                                    True
+                                </label>
+                                <input class="form-check-input" type="radio" name="isActive" id="false">
+                                <label class="form-check-label" for="false">
+                                    False
+                                </label>
+                            </div>
+                            <div class="col-md-12 mt-4 mb-1">
+                                <button class="btn btn-primary" type="button" id="updateClasses">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="../../assets/js/index.js"></script>
+</body>
+
+</html>

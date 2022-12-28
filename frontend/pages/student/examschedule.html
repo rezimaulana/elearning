@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Schedule</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/styles/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-2">
+        <div class="container-fluid">
+            <a class="navbar-brand">E-Learning</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./classes-enroll.html">Daftar Kelas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./class.html">Pembelajaran Saya</a>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Akun</a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                        <li><a class="dropdown-item" href="./profile.html">Profil</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" id="btnLogoutStudent">Logout</a></li>
+                    </ul>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid bg-light">
+
+        <div class="row g-1">
+            <div class="col-md-10 offset-md-1">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Jadwal Ujian</h5>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <a href="./home.html" class="btn btn-secondary">Kembali ke Menu Utama</a>
+                            </div>
+                        </div>
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./class-detail.html">Dashboard Kelas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./learningschedule.html">Materi Belajar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./quizschedule.html">Soal Kuis</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="./examschedule.html">Soal Ujian</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./forum.html">Forum</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Kode</th>
+                                        <th>Subjek</th>
+                                        <th>Waktu Mulai</th>
+                                        <th>Waktu Akhir</th>
+                                        <th>Aktif</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>EX-AXDAS</td>
+                                        <td>Spring Boot - Basic</td>
+                                        <td>2022-10-26 07:00:00</td>
+                                        <td>2022-10-26 08:00:00</td>
+                                        <td>true</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary" id="insertAttendanceExam">Absen Jadwal</a>
+                                                <a href="exammaterial.html" class="btn btn-secondary">Soal Ujian</a>
+                                                <a href="examcollection.html" class="btn btn-primary">Upload Jawaban</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>EX-ASKJK</td>
+                                        <td>Spring Boot - Rest</td>
+                                        <td>2022-10-27 07:00:00</td>
+                                        <td>2022-10-27 08:00:00</td>
+                                        <td>true</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary">Absen Jadwal</a>
+                                                <a class="btn btn-secondary">Soal Ujian</a>
+                                                <a class="btn btn-primary">Upload Jawaban</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>EX-LI0PL</td>
+                                        <td>Spring Boot - Security</td>
+                                        <td>2022-10-28 07:00:00</td>
+                                        <td>2022-10-28 08:00:00</td>
+                                        <td>true</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary">Absen Jadwal</a>
+                                                <a class="btn btn-secondary">Soal Ujian</a>
+                                                <a class="btn btn-primary">Upload Jawaban</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>EX-TUQIQ</td>
+                                        <td>Spring Boot - MVC</td>
+                                        <td>2022-10-29 07:00:00</td>
+                                        <td>2022-10-29 08:00:00</td>
+                                        <td>true</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary">Absen Jadwal</a>
+                                                <a class="btn btn-secondary">Soal Ujian</a>
+                                                <a class="btn btn-primary">Upload Jawaban</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>EX-ALAKS</td>
+                                        <td>Spring Boot - AOP</td>
+                                        <td>2022-10-30 07:00:00</td>
+                                        <td>2022-10-30 08:00:00</td>
+                                        <td>true</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary">Absen Jadwal</a>
+                                                <a class="btn btn-secondary">Soal Ujian</a>
+                                                <a class="btn btn-primary">Upload Jawaban</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+        <script src="../../assets/js/index.js"></script>
+</body>
+
+</html>
