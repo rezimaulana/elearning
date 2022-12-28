@@ -22,6 +22,6 @@ public class ForumDataDto {
 
     private LocalDateTime createdAt;
     private Boolean isActive;
-    private Long ver;
+    private Integer ver;
 
 }

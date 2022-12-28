@@ -141,6 +141,7 @@ public class ClassHdrService {
             responseDb.setInsEmail(findOne.getInstructor().getEmail());
             responseDb.setInsFullname(findOne.getInstructor().getFullname());
             responseDb.setFileId(findOne.getPhoto().getId());
+            responseDb.setCreatedAt(findOne.getCreatedAt());
             responseDb.setVer(findOne.getVer());
             responseDb.setIsActive(findOne.getIsActive());
             final DataResDto<ClassHdrDataDto> responseBe = new DataResDto<ClassHdrDataDto>();
@@ -165,6 +166,7 @@ public class ClassHdrService {
             result.setInsEmail(classHdr.getInstructor().getEmail());
             result.setInsFullname(classHdr.getInstructor().getFullname());
             result.setFileId(classHdr.getPhoto().getId());
+            result.setCreatedAt(classHdr.getCreatedAt());
             result.setVer(classHdr.getVer());
             result.setIsActive(classHdr.getIsActive());
             responseDb.add(result);
@@ -188,6 +190,7 @@ public class ClassHdrService {
             result.setInsEmail(classHdr.getInstructor().getEmail());
             result.setInsFullname(classHdr.getInstructor().getFullname());
             result.setFileId(classHdr.getPhoto().getId());
+            result.setCreatedAt(classHdr.getCreatedAt());
             result.setVer(classHdr.getVer());
             result.setIsActive(classHdr.getIsActive());
             responseDb.add(result);

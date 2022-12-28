@@ -14,6 +14,6 @@ public class ForumInsertReqDto {
     private String content;
 
     @NotNull
-    private String classDtlId;
+    private Long classDtlId;
 
 }

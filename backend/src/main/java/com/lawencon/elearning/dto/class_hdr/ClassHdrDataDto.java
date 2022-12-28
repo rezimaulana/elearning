@@ -1,5 +1,7 @@
 package com.lawencon.elearning.dto.class_hdr;
 
+import java.time.LocalDateTime;
+
 import lombok.Data;
 
 @Data
@@ -13,6 +15,7 @@ public class ClassHdrDataDto {
     private String insEmail;
     private String insFullname;
     private Long fileId;
+    private LocalDateTime createdAt;
     private Boolean isActive;
     private Integer ver;
 

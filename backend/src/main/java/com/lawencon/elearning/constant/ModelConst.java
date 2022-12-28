@@ -11,7 +11,9 @@ public enum ModelConst {
 	CLASS_DTL("Class Detail"),
 	SCHEDULE("Schedule"),
 	ATTENDANCE("Attendance"),
-	SUBMISSION("Submission");
+	SUBMISSION("Submission"),
+	FORUM("Forum"),
+	COMMENT("Comment");
 	
 	private final String response;
 	
