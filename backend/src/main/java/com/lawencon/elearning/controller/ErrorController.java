@@ -3,8 +3,6 @@ package com.lawencon.elearning.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.NoResultException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
@@ -47,13 +45,6 @@ public class ErrorController {
 			errors.add(e.getDefaultMessage());
 		});
 		exceptionDto.setMessage(errors);
-		return new ResponseEntity <>(exceptionDto,HttpStatus.BAD_REQUEST);
-	}
-	
-	@ExceptionHandler(NoResultException.class)
-	public ResponseEntity<ExceptionDto<String>> noResultException(NoResultException no){
-		final ExceptionDto<String> exceptionDto = new ExceptionDto<>();
-		exceptionDto.setMessage("Data not Found!");
 		return new ResponseEntity <>(exceptionDto,HttpStatus.BAD_REQUEST);
 	}
 
