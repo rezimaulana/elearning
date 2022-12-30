@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from "../components/Button"
 import BaseUrlConst from "../data/BaseUrlConst"
-import VarConst from "../data/VarConst"
 
 const Login = () => {
     
@@ -49,11 +48,13 @@ const Login = () => {
                 password: password,
             })
             .then((result) => {
+                console.log(result);
                 localStorage.setItem("data", JSON.stringify(result.data));
                 toast.success("Verified account! Welcome "+result.data.fullname+"!", {autoClose: 1000})
                 toast.success("Successful login!", {autoClose: 1000})
                 setTimeout(() => {
                     navigate('/');
+                    
                 }, 2000);
             })
             .catch((err) => {
@@ -66,8 +67,6 @@ const Login = () => {
             <ToastContainer/>
             {console.log(BaseUrlConst.BASE_URL)}
             {console.log(BaseUrlConst.FILE_URL)}
-            {console.log(VarConst.ROLE_CODE)}
-            {console.log(VarConst.AUTH_STR)}
             
             <div className="container-fluid bg-light">
                 <div className="d-flex justify-content-center align-items-center vh-100">

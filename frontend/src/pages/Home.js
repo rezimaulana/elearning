@@ -1,14 +1,15 @@
 import RoleConst from "../data/RoleConst"
-import VarConst from "../data/VarConst"
 import HomeSuperAdmin from "./super-admin/HomeSuperAdmin"
 
 const Home = () => {
 
+    const roleCode = JSON.parse(localStorage.getItem("data")).roleCode
+
     return (
         <>
-            {VarConst.ROLE_CODE === RoleConst.ROLE_SUPER_ADMIN && <HomeSuperAdmin/>}
-            {/* {VarConst.ROLE_CODE === RoleConst.ROLE_INSTRUCTOR && <HomeTeacher/>}
-            {VarConst.ROLE_CODE === RoleConst.ROLE_STUDENT && <HomeStudent/>} */}
+            {roleCode === RoleConst.ROLE_SUPER_ADMIN && <HomeSuperAdmin/>}
+            {/* {roleCode === RoleConst.ROLE_INSTRUCTOR && <HomeTeacher/>}
+            {roleCode === RoleConst.ROLE_STUDENT && <HomeStudent/>} */}
         </>
     )
 

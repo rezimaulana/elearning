@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import RoleConst from "../data/RoleConst";
-import VarConst from "../data/VarConst";
 
-export const Header = () => {
+const Header = () => {
     
     const navigate = useNavigate();
+
+    const roleCode = JSON.parse(localStorage.getItem("data")).roleCode
 
     const logout = () => {
         navigate("/login")
@@ -26,7 +27,7 @@ export const Header = () => {
                             <li className="nav-item">
                                 <a className="nav-link active" aria-current="page" href="./home.html">Home</a>
                             </li>
-                            {VarConst.ROLE_CODE == RoleConst.ROLE_SUPER_ADMIN && (
+                            {roleCode === RoleConst.ROLE_SUPER_ADMIN && (
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                         aria-expanded="false">
@@ -38,12 +39,12 @@ export const Header = () => {
                                     </ul>
                                 </li>
                             )}
-                            {VarConst.ROLE_CODE == RoleConst.ROLE_INSTRUCTOR && (
+                            {roleCode === RoleConst.ROLE_INSTRUCTOR && (
                                 <li className="nav-item">
                                     <a className="nav-link" href="./classes.html">Manage Class</a>
                                 </li>
                             )}
-                            {VarConst.ROLE_CODE == RoleConst.ROLE_STUDENT && (
+                            {roleCode === RoleConst.ROLE_STUDENT && (
                                 <>
                                     <li className="nav-item">
                                         <a className="nav-link" href="./classes-enroll.html">Enroll Class</a>
@@ -62,7 +63,7 @@ export const Header = () => {
                                 <li>
                                     <hr className="dropdown-divider"/>
                                 </li>
-                                <li><a className="dropdown-item" id="btnLogoutAdmin">Logout</a></li>
+                                <li><a className="dropdown-item" id="btnLogoutAdmin" onClick={logout}>Logout</a></li>
                             </ul>
                         </button>
                     </div>
@@ -72,3 +73,5 @@ export const Header = () => {
     )
 
 };
+
+export default Header

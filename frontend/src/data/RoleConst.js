@@ -1,8 +1,8 @@
-const RoleConst = {
+const RoleConst = Object.freeze({
     ROLE_SYSTEM: "RLSYS",
     ROLE_SUPER_ADMIN: "RLSAM",
     ROLE_INSTRUCTOR: "RLINS",
     ROLE_STUDENT: "RLSTD"
-  };
+  });
   
   export default RoleConst
