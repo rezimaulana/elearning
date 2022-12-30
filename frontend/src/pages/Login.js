@@ -1,9 +1,11 @@
-import { Button } from "../components/Button"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import axios from "../lib/axios"
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { Button } from "../components/Button"
+import BaseUrlConst from "../data/BaseUrlConst"
+import VarConst from "../data/VarConst"
 
 const Login = () => {
     
@@ -26,6 +28,21 @@ const Login = () => {
     }
 
     const login = () => {
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        const passwordRegex = /^(?=.*[a-z]|.*[A-Z])(?=.{5,})/;
+        
+        // good password recommend
+        // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+        
+        if (email.length === 0 || !emailRegex.test(email)) {
+            toast.error("Invalid e-mail!")
+            return;
+        }
+
+        if (password.length === 0 || !passwordRegex.test(password)) {
+            toast.error("Invalid password!")
+            return;
+        }
         axios
             .post("/login", {
                 email: email,
@@ -47,6 +64,11 @@ const Login = () => {
     return(
         <>
             <ToastContainer/>
+            {console.log(BaseUrlConst.BASE_URL)}
+            {console.log(BaseUrlConst.FILE_URL)}
+            {console.log(VarConst.ROLE_CODE)}
+            {console.log(VarConst.AUTH_STR)}
+            
             <div className="container-fluid bg-light">
                 <div className="d-flex justify-content-center align-items-center vh-100">
                     <div className="card">

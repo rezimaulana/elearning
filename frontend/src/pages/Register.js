@@ -31,6 +31,18 @@ const Register = () => {
     }
 
     const register = () => {
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        const fullnameRegex = /^(?=.*[a-z]|.*[A-Z])(?=.{5,})/;
+
+        if (dataRegister.data.email.length === 0 || !emailRegex.test(dataRegister.data.email)) {
+            toast.error("Invalid e-mail!")
+            return;
+        }
+
+        if (dataRegister.data.fullname.length === 0 || !fullnameRegex.test(dataRegister.data.fullname)) {
+            toast.error("Invalid name!")
+            return;
+        }
         axios
             .post("/register", dataRegister.data)
             .then((result) => {
