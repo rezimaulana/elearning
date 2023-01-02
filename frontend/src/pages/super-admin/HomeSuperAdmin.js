@@ -12,23 +12,23 @@ const HomeSuperAdmin = () => {
                             <div className="card-body">
                                 <div className="row justify-content-evenly g-1">
                                     <div className="card text-bg-light col-md-3" style={{maxWidth : '18rem'}}>
-                                        <div className="card-header">Kelas</div>
+                                        <div className="card-header">Class</div>
                                         <div className="card-body">
-                                            <h5 className="card-title">Jumlah Kelas</h5>
+                                            <h5 className="card-title">Total Class</h5>
                                             <p className="card-text">10</p>
                                         </div>
                                     </div>
                                     <div className="card text-bg-light col-md-3" style={{maxWidth : '18rem'}}>
-                                        <div className="card-header">Guru</div>
+                                        <div className="card-header">Instructor</div>
                                         <div className="card-body">
-                                            <h5 className="card-title">Jumlah Guru</h5>
+                                            <h5 className="card-title">Total Instructor</h5>
                                             <p className="card-text">5</p>
                                         </div>
                                     </div>
                                     <div className="card text-bg-light col-md-3" style={{maxWidth : '18rem'}}>
-                                        <div className="card-header">Siswa</div>
+                                        <div className="card-header">Student</div>
                                         <div className="card-body">
-                                            <h5 className="card-title">Jumlah Siswa</h5>
+                                            <h5 className="card-title">Total Student</h5>
                                             <p className="card-text">120</p>
                                         </div>
                                     </div>

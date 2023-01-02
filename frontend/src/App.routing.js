@@ -3,6 +3,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import RouteWithProtected from "./features/authentication/RouteWithProtected";
+import UserSession from "./features/authentication/UserSession";
+import ClassHdrSuperAdmin from "./pages/super-admin/class-hdr/ClassHdrSuperAdmin";
 
 export const router = createBrowserRouter([
   {
@@ -11,10 +13,19 @@ export const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: <Login/>,
+    element: <UserSession><Login/></UserSession>,
   },
   {
     path: "register",
-    element: <Register/>,
+    element:<UserSession><Register/></UserSession>,
   },
+  {
+    path: "class-hdr",
+    children: [
+      {
+        path: "data",
+        element: <RouteWithProtected Component={ClassHdrSuperAdmin}/>,
+      }
+    ]
+  }
 ]);

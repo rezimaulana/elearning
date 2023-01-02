@@ -9,7 +9,7 @@ import BaseUrlConst from "../data/BaseUrlConst"
 const Login = () => {
     
     const navigate = useNavigate()
-
+    
     const [email, setEmail] = useState("");
 
     const [password, setPassword] = useState("");
