@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from "../components/Button"
 import BaseUrlConst from "../data/BaseUrlConst"
+import { Input } from "../components/Input";
 
 const Login = () => {
     
@@ -48,7 +49,6 @@ const Login = () => {
                 password: password,
             })
             .then((result) => {
-                console.log(result);
                 localStorage.setItem("data", JSON.stringify(result.data));
                 toast.success("Verified account! Welcome "+result.data.fullname+"!", {autoClose: 1000})
                 toast.success("Successful login!", {autoClose: 1000})
@@ -65,9 +65,6 @@ const Login = () => {
     return(
         <>
             <ToastContainer/>
-            {console.log(BaseUrlConst.BASE_URL)}
-            {console.log(BaseUrlConst.FILE_URL)}
-            
             <div className="container-fluid bg-light">
                 <div className="d-flex justify-content-center align-items-center vh-100">
                     <div className="card">
@@ -84,10 +81,10 @@ const Login = () => {
                         </div>
                         <div className="card-body">
                             <form className="justify-content-center" noValidate>
-                                <label htmlFor="email" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="email" name="email" onChange={emailHandle} required/>
-                                <label htmlFor="password" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="password" name="password" onChange={passwordHandle} required/>
+                                <Input htmlFor={"email"} classNameLabel={"form-label"} label={"Email"} type={"email"}
+                                    classNameInput={"form-control"} id={"email"} name={"email"} onChange={emailHandle}/>
+                                <Input htmlFor={"password"} classNameLabel={"form-label"} label={"Password"} type={"password"}
+                                    classNameInput={"form-control"} id={"password"} name={"password"} onChange={passwordHandle}/>
                                 <div className="btn-group mt-3">
                                     <Button type={"button"} className={"btn btn-primary"} id={"btnLoginSubmit"}
                                         name={"btnLoginSubmit"} label={"Login"} onClick={login}/>

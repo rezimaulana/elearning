@@ -71,8 +71,8 @@ const ClassHdrSuperAdmin = () => {
                                                         <img src={BaseUrlConst.FILE_URL+val.fileId} id="class-hdr-photo-list" name="class-hdr-photo-list"/>
                                                     </td>
                                                     <td>
-                                                        {val.isActive == true && 'true'}
-                                                        {val.isActive == false && 'false'}
+                                                        {val.isActive === true && 'true'}
+                                                        {val.isActive === false && 'false'}
                                                     </td>
                                                     <td>
                                                         <div class="btn-group">

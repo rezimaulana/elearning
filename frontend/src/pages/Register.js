@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "../lib/axios"
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { Input } from "../components/Input";
 
 const Register = () => {
 
@@ -77,10 +78,10 @@ const Register = () => {
                         </div>
                         <div className="card-body">
                             <form className="justify-content-center">
-                                <label htmlFor="email" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="email" name="email" onChange={dataHandle} required/>
-                                <label htmlFor="fullname" className="form-label mt-1">Fullname</label>
-                                <input type="text" className="form-control" id="fullname" name="fullname" onChange={dataHandle} required/>
+                                <Input htmlFor={"email"} classNameLabel={"form-label"} label={"Email"} type={"email"}
+                                    classNameInput={"form-control"} id={"email"} name={"email"} onChange={dataHandle}/>
+                                <Input htmlFor={"fullname"} classNameLabel={"form-label"} label={"Fullname"} type={"text"}
+                                    classNameInput={"form-control"} id={"fullname"} name={"fullname"} onChange={dataHandle}/>
                                 <div className="btn-group mt-4">
                                     <Button type={"button"} className={"btn btn-primary"} id={"btnRegisterSubmit"}
                                         name={"btnRegisterSubmit"} label={"Register"} onClick={register}/>

@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
+const UserGuardRoute = ({ children }) => {
   const token = localStorage.getItem("data");
   if (!token) {
     return <Navigate to="/login" />;
@@ -8,4 +8,4 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-export default ProtectedRoute;
+export default UserGuardRoute;

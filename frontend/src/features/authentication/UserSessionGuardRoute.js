@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-const UserSession = ({ children }) => {
+const UserSessionGuardRoute = ({ children }) => {
   const token = localStorage.getItem("data");
   if (token) {
     return <Navigate to="/" />;
@@ -8,4 +8,4 @@ const UserSession = ({ children }) => {
   return children;
 };
 
-export default UserSession;
+export default UserSessionGuardRoute;

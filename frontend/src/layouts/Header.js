@@ -16,7 +16,7 @@ const Header = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-2">
                 <div className="container-fluid">
-                    <a className="navbar-brand">E-Learning</a>
+                    <Link className="navbar-brand">E-Learning</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -29,42 +29,42 @@ const Header = () => {
                             </li>
                             {roleCode === RoleConst.ROLE_SUPER_ADMIN && (
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown"
                                         aria-expanded="false">
                                         Master Data
-                                    </a>
+                                    </Link>
                                     <ul className="dropdown-menu">
-                                        <li><a className="dropdown-item" href="./classes.html">Activity</a></li>
-                                        <li><a className="dropdown-item" href="./classes.html">Class</a></li>
-                                        <li><a className="dropdown-item" href="./users.html">User</a></li>
+                                        <li><Link className="dropdown-item" to="/activities">Activity</Link></li>
+                                        <li><Link className="dropdown-item" to="/class-hdr">Class Header</Link></li>
+                                        <li><Link className="dropdown-item" to="/users">User</Link></li>
                                     </ul>
                                 </li>
                             )}
                             {roleCode === RoleConst.ROLE_INSTRUCTOR && (
                                 <li className="nav-item">
-                                    <a className="nav-link" href="./classes.html">Manage Class</a>
+                                    <Link className="nav-link" to="./classes.html">Manage Class</Link>
                                 </li>
                             )}
                             {roleCode === RoleConst.ROLE_STUDENT && (
                                 <>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="./classes-enroll.html">Enroll Class</a>
+                                        <Link className="nav-link" to="./classes-enroll.html">Enroll Class</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="./className.html">My Learning</a>
+                                        <Link className="nav-link" to="./className.html">My Learning</Link>
                                     </li>
                                 </>
                             )}
                         </ul>
                         <button type="button" className="btn btn-primary nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Akun</a>
+                            <Link className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Account</Link>
                             <ul className="dropdown-menu dropdown-menu-lg-end">
-                                <li><a className="dropdown-item" href="./profile.html">Profil</a></li>
+                                <li><Link className="dropdown-item" to="./profile.html">Profile</Link></li>
                                 <li>
                                     <hr className="dropdown-divider"/>
                                 </li>
-                                <li><a className="dropdown-item" id="btnLogoutAdmin" onClick={logout}>Logout</a></li>
+                                <li><Link className="dropdown-item" id="btnLogoutAdmin" onClick={logout}>Logout</Link></li>
                             </ul>
                         </button>
                     </div>

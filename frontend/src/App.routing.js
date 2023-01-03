@@ -2,29 +2,41 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import RouteWithProtected from "./features/authentication/RouteWithProtected";
-import UserSession from "./features/authentication/UserSession";
+import RoleGuardRoute from "./features/authentication/RoleGuardRoute";
+import UserSessionGuardRoute from "./features/authentication/UserSessionGuardRoute";
+import RoleConst from "./data/RoleConst";
 import ClassHdrSuperAdmin from "./pages/super-admin/class-hdr/ClassHdrSuperAdmin";
+import ActivitySuperAdmin from "./pages/super-admin/activity/ActivitySuperAdmin";
+import UserGuardRoute from "./features/authentication/UserGuardRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <RouteWithProtected Component={Home}/>,
+    element: <Home/>,
   },
   {
     path: "login",
-    element: <UserSession><Login/></UserSession>,
+    element: <UserSessionGuardRoute><Login/></UserSessionGuardRoute>,
   },
   {
     path: "register",
-    element:<UserSession><Register/></UserSession>,
+    element:<UserSessionGuardRoute><Register/></UserSessionGuardRoute>,
   },
   {
-    path: "class-hdr",
+    path: "",
     children: [
       {
-        path: "data",
-        element: <RouteWithProtected Component={ClassHdrSuperAdmin}/>,
+        path: "activities",
+        element: <RoleGuardRoute Component={ActivitySuperAdmin} role={RoleConst.ROLE_SUPER_ADMIN}/>,
+      }
+    ]
+  },
+  {
+    path: "",
+    children: [
+      {
+        path: "class-hdr",
+        element: <RoleGuardRoute Component={ClassHdrSuperAdmin} role={RoleConst.ROLE_SUPER_ADMIN}/>,
       }
     ]
   }
